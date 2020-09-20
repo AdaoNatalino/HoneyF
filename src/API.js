@@ -1,6 +1,6 @@
 const URL = `https://localhost:44351/api/`
 
-const getToken = () => localStorage.getItem("jwt");
+const getToken = () => localStorage.getItem("user");
 
 const validateToken = () => {
   return fetch(URL + "validate", {
