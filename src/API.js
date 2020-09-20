@@ -1,4 +1,4 @@
-const URL = `http://localhost:3001/`
+const URL = `https://localhost:44351/api/`
 
 const getToken = () => localStorage.getItem("jwt");
 
@@ -12,47 +12,47 @@ const validateToken = () => {
 }
 
 const createNewUser = (userData) => {
-    return fetch(URL + "users", {
+    return fetch(URL + "clients", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
         },
-        body: JSON.stringify({ user: userData }),
+        body: JSON.stringify( userData ),
       })
         .then((res) => res.json())
         .then((res) => {
-            // console.log(res);
-          localStorage.setItem("jwt", res.jwt);
+            // console.log(res.client);
+          localStorage.setItem("user", res.client.username);
           return res;
         })
 }
 
 const logInUser = (userData) => {
-  return fetch(URL + `login`, {
+  return fetch(URL + `clients/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json",
+        "Accept": "application/json",
       },
-      body: JSON.stringify({ user: userData }),
+      body: JSON.stringify(userData ),
     })
       .then((res) => res.json())
       .then((res) => {
+          console.log(res)
         localStorage.setItem("jwt", res.jwt);
         return res;
       })
 }
-
 
 const createNewItem = (itemData) => {
   return fetch(URL + "items", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
+      "Accept": "application/json",
     },
-    body: JSON.stringify({ item: itemData }),
+    body: JSON.stringify( itemData ),
   })
     .then((res) => res.json())
     .then((res) => {

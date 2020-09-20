@@ -3,7 +3,7 @@ import React from 'react'
 export default function Authorized() {
     return (
         <div>
-            Auto
+            eu sou o autorizado
         </div>
     )
 }
