@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,6 +11,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
+import { UserContext } from '../../App'
+
 
 import API from "../../API";
 
@@ -47,7 +49,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp({ handlePostAuth }) {
+export default function SignUp() {
+  const { handlePostAuth }  = useContext(UserContext)
+
   const classes = useStyles();
 
   const [name, setName] = useState("");

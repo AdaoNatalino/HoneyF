@@ -5,11 +5,11 @@ import "./App.css";
 import Authorized from "./Components/Authorized/Authorized";
 import Unauthorized from "./Components/Unauthorized/Unauthorized";
 
-export const UserContext = createContext()
+export const UserContext = createContext();
 
 function App() {
   const [user, setUser] = useState(null);
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     document.title = "Project - Order";
@@ -21,7 +21,7 @@ function App() {
       alert(resp.error);
     } else {
       setUser(resp.client.username);
-      setOrders(resp.client.orders)
+      setOrders(resp.client.orders);
       if (resp.client) localStorage.setItem("user", resp.client.username);
     }
   };
@@ -32,22 +32,18 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <UserContext.Provider
+      value={{
+        userInfo: user,
+        handlePostAuth: handlePostAuth,
+        orders: orders,
+        logOut: logOut,
+      }}
+    >
       <Router>
-        <Switch>
-          {user ? (
-            <Authorized
-              orders={orders}
-              user={user}
-              logOut={logOut}
-              handlePostAuth={handlePostAuth}
-            />
-          ) : (
-            <Unauthorized handlePostAuth={ handlePostAuth } />
-          )}
-        </Switch>
+        <Switch>{user ? <Authorized /> : <Unauthorized />}</Switch>
       </Router>
-    </div>
+    </UserContext.Provider>
   );
 }
 

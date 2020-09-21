@@ -6,25 +6,23 @@ import SignIn from './SignIn'
 import SignUp from './SignUp'
 
 
-export default function Unauthorized( { handlePostAuth } ) {
+export default function Unauthorized( ) {
     return (
         <div>
             <UnAuthMenu/>
             <Switch>
                 <Route exact path="/">
                     <Home
-                    // user={user}
+                  
                     />
                     {/* <AppFooter/> */}
                 </Route>
                 <Route exact path="/login">
                     <SignIn
-                    handlePostAuth={handlePostAuth}
                     />
                 </Route>
                 <Route exact path="/signup">
                     <SignUp
-                    handlePostAuth={handlePostAuth}
                     />
                 </Route>
             </Switch>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,6 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
+import { UserContext } from '../../App'
+
 
 
 
@@ -61,13 +63,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({ handlePostAuth }) {
+export default function SignIn() {
   const classes = useStyles();
 
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   
   let history = useHistory();
+  const { handlePostAuth }  = useContext(UserContext)
 
 
   const handleSignIn = (e) => {
