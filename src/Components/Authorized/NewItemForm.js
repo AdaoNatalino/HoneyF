@@ -13,8 +13,6 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 import API from '../../API';
@@ -24,7 +22,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="/">
-        Let Me Go!
+        PROJECT!
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -52,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NewItemForm({ user }) {
+export default function NewItemForm() {
   const classes = useStyles();
 
   const [name, setName] = useState("")
@@ -61,10 +59,9 @@ export default function NewItemForm({ user }) {
   const [category_id, setCategory_id] = useState("")
   const [imageFile, setImageFile] = useState(null)
   const [image, setImage] = useState(null)
-  const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(false)
   
-  const user_id = user.id  
+  const user_id = 1  
   let history = useHistory();
 
 
@@ -118,7 +115,6 @@ export default function NewItemForm({ user }) {
     })
   }
 
-  const categoriesOptions = () =>  categories.map(cat => <option key={cat.id} value={cat.id}>{cat.title}</option> )
 
   return (
     <Container component="main" maxWidth="xs">
@@ -172,21 +168,7 @@ export default function NewItemForm({ user }) {
               />
             </Grid>
             <Grid item xs={12}>
-                <FormControl variant="outlined" className={classes.form}>
-                    <InputLabel htmlFor="outlined-category-native-simple">Category*</InputLabel>
-                    <Select
-                    native
-                    onChange={ (e) => setCategory_id(e.target.value) }            
-                    label="Category"
-                    inputProps={{
-                        name: 'category',
-                        id: 'outlined-category-native-simple',
-                    }}
-                    >
-                    <option aria-label="None" value="" />
-                    { categoriesOptions() }
-                    </Select>
-                </FormControl>
+              
             </Grid>
             <Grid item xs={12}>
               <FormControl variant="outlined" className={classes.form}>
@@ -241,10 +223,6 @@ export default function NewItemForm({ user }) {
           </Grid>
         </form>
       </div>
-
-      <Box mt={5}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }

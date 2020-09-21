@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from "react-router-dom";
 
 import { fade, makeStyles } from '@material-ui/core/styles';
@@ -9,6 +9,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import { UserContext } from '../../App'
+
 
 import MoreIcon from '@material-ui/icons/MoreVert';
 
@@ -76,7 +78,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AuthMenu({ logOut }) {
+export default function AuthMenu() {
+  const { logOut } = useContext(UserContext)
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);

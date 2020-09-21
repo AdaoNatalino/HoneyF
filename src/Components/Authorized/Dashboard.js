@@ -25,23 +25,8 @@ import MyItemsContainer from "./MyItemsContainer"
 import { UserContext } from '../../App'
 
 
-
-
 import API from "../../API"
 
-
-// function Copyright() {
-//   return (
-//     <Typography variant="body2" color="textSecondary" align="center">
-//       {'Copyright © '}
-//       <Link color="inherit" href="/">
-//         PROJECT!
-//       </Link>{' '}
-//       {new Date().getFullYear()}
-//       {'.'}
-//     </Typography>
-//   );
-// }
 
 const drawerWidth = 240;
 
@@ -131,9 +116,8 @@ export default function Dashboard() {
 
   let history = useHistory();
 
-  const [user, setUser] = useState(userInfo)
-
   const classes = useStyles();
+  
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -141,26 +125,9 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-  const RENDER = {
-    ITEMS: "items",
-  }
-
-  const comeBackToTrades = () => {
-    setRender(RENDER.TRADES)
-  }
-
-  const [render, setRender] = useState(RENDER.ITEMS)
-
-  const renderMyItemsContainer = () => <MyItemsContainer  orders={orders} user={user}/>
+  const renderMyItemsContainer = () => <MyItemsContainer  orders={orders} userInfo={userInfo}/>
  
-
-  const whatComponentToRender = () => {
-    if(render === RENDER.ITEMS) return renderMyItemsContainer();
-
-  }
-  
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -250,7 +217,7 @@ export default function Dashboard() {
 
             <Grid item xs={12} md={8} lg={9}>
            
-              { whatComponentToRender() }
+              { renderMyItemsContainer() }
 
             </Grid>
             <Grid item xs={12}>

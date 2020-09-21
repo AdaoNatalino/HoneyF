@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Switch, Route } from "react-router-dom";
-import { UserContext } from "../../App";
 
 // import NotFound404 from "../NotFound404"
 import Home from "../HomeTheme/Home";
