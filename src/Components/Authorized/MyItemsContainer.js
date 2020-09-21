@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { UserContext } from '../../App'
+import API from "../../API"
+
 
 
 const StyledTableCell = withStyles((theme) => ({
@@ -35,17 +37,29 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MyItemsContainer({ orders }) {
+export default function MyItemsContainer() {
+  const [orders, setOrders] = useState([])
+
+  useEffect(() => {
+    API.getMyOrders(userInfo).then(r => setOrders(r.orders))
+  },[orders])
+
+  useEffect(() => {
+    API.getMyOrders(userInfo).then(r => setOrders(r.orders))
+  },[])
+  
     const classes = useStyles();
     const { userInfo } = useContext(UserContext)
-  
+    
+
+    
     return (
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="customized table">
           <TableHead>
             <TableRow>
               <StyledTableCell>CLIENT </StyledTableCell>
-              <StyledTableCell align="right">TRADE TYPE</StyledTableCell>
+              <StyledTableCell align="right">TYPE</StyledTableCell>
               <StyledTableCell align="right">INSTRUMENT</StyledTableCell>
               <StyledTableCell align="right">VOLUME</StyledTableCell>
               <StyledTableCell align="right">PRICE</StyledTableCell>
@@ -60,7 +74,7 @@ export default function MyItemsContainer({ orders }) {
                 <StyledTableCell component="th" scope="row">
                   {userInfo}
                 </StyledTableCell>
-                <StyledTableCell align="right">{order.tradeType === 1 ? "Bought" : "Sold"}</StyledTableCell>
+                <StyledTableCell align="right">{order.trade_Type}</StyledTableCell>
                 <StyledTableCell align="right">{order.instrument}</StyledTableCell>
                 <StyledTableCell align="right">{order.volume}</StyledTableCell>
                 <StyledTableCell align="right">{order.price}</StyledTableCell>

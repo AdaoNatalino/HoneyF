@@ -25,7 +25,6 @@ import MyItemsContainer from "./MyItemsContainer"
 import { UserContext } from '../../App'
 
 
-import API from "../../API"
 
 
 const drawerWidth = 240;
@@ -112,12 +111,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Dashboard() {
-  const { orders, userInfo, logOut }  = useContext(UserContext)
+  const { userInfo, logOut }  = useContext(UserContext)
+ 
 
   let history = useHistory();
 
   const classes = useStyles();
-  
+
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -126,7 +126,7 @@ export default function Dashboard() {
     setOpen(false);
   };
 
-  const renderMyItemsContainer = () => <MyItemsContainer  orders={orders} userInfo={userInfo}/>
+  const renderMyItemsContainer = () => <MyItemsContainer userInfo={userInfo}/>
  
   return (
     <div className={classes.root}>
@@ -187,7 +187,10 @@ export default function Dashboard() {
             
             <div>
 
-              <ListItem button onClick={ ()=> history.push("/newItem") }>
+              <ListItem button onClick={ ()=> {
+                
+                history.push("/newItem")
+                } }>
                 <ListItemIcon>
                   <AddToPhotosIcon />
                 </ListItemIcon>

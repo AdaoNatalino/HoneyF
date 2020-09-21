@@ -2,15 +2,6 @@ const URL = `https://localhost:44351/api/`
 
 const getToken = () => localStorage.getItem("user");
 
-const validateToken = () => {
-  return fetch(URL + "validate", {
-      headers: {
-          Authorization: `Bearer ${ getToken() }`,
-      }
-  })
-  .then(res => res.json())
-}
-
 const createNewUser = (userData) => {
     return fetch(URL + "clients", {
         method: "POST",
@@ -45,8 +36,9 @@ const logInUser = (userData) => {
       })
 }
 
-const createNewItem = (itemData) => {
-  return fetch(URL + "items", {
+const processNewOrders = (itemData, user) => {
+  console.log(itemData, user)
+  return fetch(URL + `orders/multiple?username=${user}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -56,46 +48,22 @@ const createNewItem = (itemData) => {
   })
     .then((res) => res.json())
     .then((res) => {
+      console.log(res)
       return res;
     })
 }
 
-const configObject = (request, key = "", data = "") => {
-  const obj = {
-    method: request,
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({ [key]: data }),
-  }
-  return obj
-}
 
-const requestNewTrade = (tradeData) => {
-  const obj = configObject("POST", "trade", tradeData)
-  return fetch(URL + "trades", obj)
-  .then((res) => res.json())
-  .then((res) => {
-    return res;
-  })
-}
-
-const getMyTrades = (id) => {
-  return fetch(URL + "trades/" + id)
+const getMyOrders = (userInfo) => {
+  return fetch(URL + `orders?username=${userInfo}`)
   .then(resp => resp.json())
-  .catch(error => console.log(error))
-}
-
-const getMyItems = (id) => {
-  return fetch(URL + "myItems/" + id)
-  .then(resp => resp.json())
+  // .then(r => console.log(r))
   .catch(error => console.log(error))
 }
 
 
 export default { 
-  createNewUser, logInUser, validateToken, getMyItems,
-  createNewItem, requestNewTrade, getMyTrades,
+  createNewUser, logInUser, getMyOrders,
+  processNewOrders, 
   
 }  

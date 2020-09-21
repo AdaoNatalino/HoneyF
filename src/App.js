@@ -9,7 +9,6 @@ export const UserContext = createContext();
 
 function App() {
   const [user, setUser] = useState(null);
-  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     document.title = "Project - Order";
@@ -20,9 +19,10 @@ function App() {
     if (resp.error) {
       alert(resp.error);
     } else {
-      setUser(resp.client.username);
-      setOrders(resp.client.orders);
-      if (resp.client) localStorage.setItem("user", resp.client.username);
+      if (resp.client) {
+        setUser(resp.client.username);
+        localStorage.setItem("user", resp.client.username);
+      }
     }
   };
 
@@ -35,9 +35,8 @@ function App() {
     <UserContext.Provider
       value={{
         userInfo: user,
-        handlePostAuth: handlePostAuth,
-        orders: orders,
-        logOut: logOut,
+        handlePostAuth,
+        logOut,
       }}
     >
       <Router>
