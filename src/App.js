@@ -1,6 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
-
 import "./App.css";
 import Authorized from "./Components/Authorized/Authorized";
 import Unauthorized from "./Components/Unauthorized/Unauthorized";
