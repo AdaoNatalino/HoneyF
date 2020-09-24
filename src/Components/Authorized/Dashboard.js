@@ -25,8 +25,6 @@ import MyItemsContainer from "./MyItemsContainer"
 import { UserContext } from '../../App'
 
 
-
-
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
