@@ -10,7 +10,7 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    document.title = "Project - Order";
+    document.title = "Winterflood Project";
     if (localStorage.getItem("user")) setUser(localStorage.getItem("user"));
   }, []);
 

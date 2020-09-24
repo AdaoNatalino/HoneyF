@@ -6,7 +6,8 @@ import ProductHeroLayout from './ProductHeroLayout';
 
 const backgroundImage = 
 // 'https://www.indianweb2.com/wp-content/uploads/2015/05/barter_system.jpg'
-  'https://miro.medium.com/max/12000/1*cuOXHtuMPGpudm93fhklww.jpeg';
+  // 'https://miro.medium.com/max/12000/1*cuOXHtuMPGpudm93fhklww.jpeg';
+  'https://www.1stformationsblog.co.uk/wp-content/uploads/2014/06/business-bank-accounts-for-non-UK-residents-977x4881-1280x720.jpg'
 
 const styles = (theme) => ({
   background: {
@@ -39,21 +40,10 @@ function ProductHero(props) {
         src={backgroundImage}
         alt="increase priority"
       />
-      <Typography color="inherit" align="center" variant="h2" marked="center">
-      EXCHANGE! TRADE! BARTER!
+      <Typography color="inherit" align="center" variant="h2" >
+      WINTERFLOOD PROJECT 
       </Typography>
-      <Typography
-        color="inherit"
-        align="center"
-        variant="h5"
-        className={classes.h5}
-      >
-        The right place for you to get rid of things you don't want anymore!.
-      </Typography>
-     
-      <Typography variant="h6" color="inherit" className={classes.more}>
-        Check it out!
-      </Typography>
+    
     </ProductHeroLayout>
   );
 }
