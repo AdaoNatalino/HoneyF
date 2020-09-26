@@ -110,7 +110,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const { userInfo, logOut }  = useContext(UserContext)
- 
 
   let history = useHistory();
 
