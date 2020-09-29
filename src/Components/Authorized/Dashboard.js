@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from "react-router-dom";
 
 
@@ -94,7 +94,6 @@ const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
-    // backgroundColor: "#696969"
   },
   paper: {
     padding: theme.spacing(1),
@@ -221,14 +220,9 @@ export default function Dashboard() {
 
             </Grid>
             <Grid item xs={12}>
-              {/* <Paper className={classes.paper} 
-              >
-              </Paper> */}
+   
             </Grid>
           </Grid>
-          {/* <Box pt={4}>
-            <Copyright />
-          </Box> */}
         </Container>
       </main>
     </div>

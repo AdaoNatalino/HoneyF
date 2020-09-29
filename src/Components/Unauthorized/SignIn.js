@@ -13,11 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
 import { UserContext } from '../../App'
 
-
-
-
 import API from "../../API";
-
 
 function Copyright() {
   return (
@@ -76,7 +72,6 @@ export default function SignIn() {
   const handleSignIn = (e) => {
     e.preventDefault();
     const userData = { username, password }
-    // console.log(userData)
     API.logInUser(userData)
     .then(handlePostAuth)
     

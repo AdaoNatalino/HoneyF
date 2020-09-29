@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-// import NotFound404 from "../NotFound404"
 import Home from "../HomeTheme/Home";
 import AuthMenu from "./AuthMenu";
 import NewItemForm from "./NewItemForm";
@@ -23,10 +22,6 @@ export default function Authorized() {
         <Route exact path="/profile">
           <DashBoard />
         </Route>
-
-        {/* <Route path="*">
-                    <NotFound404 />
-                </Route> */}
       </Switch>
     </>
   );

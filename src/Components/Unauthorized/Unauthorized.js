@@ -15,7 +15,6 @@ export default function Unauthorized( ) {
                     <Home
                   
                     />
-                    {/* <AppFooter/> */}
                 </Route>
                 <Route exact path="/login">
                     <SignIn
