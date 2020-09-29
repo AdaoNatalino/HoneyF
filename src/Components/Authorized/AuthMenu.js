@@ -10,10 +10,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import { UserContext } from '../../App'
-
-
 import MoreIcon from '@material-ui/icons/MoreVert';
-
 
 const useStyles = makeStyles((theme) => ({
   grow: {
