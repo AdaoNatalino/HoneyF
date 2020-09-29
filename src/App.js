@@ -29,12 +29,13 @@ function App() {
     setUser(null);
   };
   return (
-    <UserContext.Provider
-      value={{
+    <UserContext.Provider value={
+      {
         userInfo: user,
         handlePostAuth,
         logOut,
-      }}
+      }
+    }
     >
       <Router>
         <Switch>{user ? <Authorized /> : <Unauthorized />}</Switch>
