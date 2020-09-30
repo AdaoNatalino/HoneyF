@@ -28,14 +28,14 @@ function App() {
     localStorage.removeItem("user");
     setUser(null);
   };
+
+  const properties = {
+    userInfo: user,
+    handlePostAuth, 
+    logOut
+  }
   return (
-    <UserContext.Provider value={
-      {
-        userInfo: user,
-        handlePostAuth,
-        logOut,
-      }
-    }
+    <UserContext.Provider value={ properties }
     >
       <Router>
         <Switch>{user ? <Authorized /> : <Unauthorized />}</Switch>
