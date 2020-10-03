@@ -1,11 +1,10 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
-
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,21 +23,18 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: 'black' }}>
+      <AppBar position="static" style={{ backgroundColor: "black" }}>
         <Toolbar>
-
           <Typography variant="body1" className={classes.title} align="justify">
-
-            <Link href="/" style={{ color: 'white' }}> 
-                PROJECT!
+            <Link href="/" style={{ color: "white" }}>
+              PROJECT!
             </Link>
-
           </Typography>
-          
-          <Link href="/login" style={{ color: 'white' }} >
+
+          <Link href="/login" style={{ color: "white" }}>
             <Button color="inherit">Sign In</Button>
           </Link>
-          <Link href="/signup" style={{ color: 'white' }} >
+          <Link href="/signup" style={{ color: "white" }}>
             <Button color="inherit">Sign Up</Button>
           </Link>
         </Toolbar>

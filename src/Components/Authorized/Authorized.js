@@ -5,7 +5,7 @@ import Home from "../HomeTheme/Home";
 import AuthMenu from "./AuthMenu";
 import NewItemForm from "./NewItemForm";
 import DashBoard from "./Dashboard";
-import AppFooter from '../AppFooter';
+import AppFooter from "../AppFooter";
 
 export default function Authorized() {
   return (
@@ -14,7 +14,7 @@ export default function Authorized() {
       <Switch>
         <Route exact path="/">
           <Home />
-          <AppFooter/>
+          <AppFooter />
         </Route>
         <Route exact path="/newItem">
           <NewItemForm />
