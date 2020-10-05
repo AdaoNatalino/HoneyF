@@ -1,4 +1,4 @@
-const URL = `https://localhost:5001/api/`;
+const URL = `https://localhost:5001/api/`
 
 const createNewUser = (userData) => {
   return fetch(URL + "clients", {
