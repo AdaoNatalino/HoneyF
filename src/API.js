@@ -58,9 +58,4 @@ const getMyOrders = (userInfo) => {
   );
 };
 
-export default {
-  createNewUser,
-  logInUser,
-  getMyOrders,
-  processNewOrders,
-};
+export default { createNewUser, logInUser, getMyOrders, processNewOrders };
