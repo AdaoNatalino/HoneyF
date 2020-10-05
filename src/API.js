@@ -27,7 +27,7 @@ const logInUser = (userData) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       localStorage.setItem("jwt", res.jwt);
       return res;
     });
@@ -45,7 +45,7 @@ const processNewOrders = (itemData, user) => {
   })
     .then((res) => res.json())
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       return res;
     });
 };

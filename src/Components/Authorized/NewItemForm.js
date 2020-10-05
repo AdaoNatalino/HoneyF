@@ -71,11 +71,14 @@ export default function NewItemForm() {
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12}>
+
               <CSVReader
                 cssClass="react-csv-input"
                 onFileLoaded={handleForce}
                 parserOptions={papaparseOptions}
               />
+
+              
             </Grid>
           </Grid>
 
