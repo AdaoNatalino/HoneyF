@@ -45,6 +45,7 @@ export default function MyItemsContainer() {
     API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
   }, []);
 
+  
   const classes = useStyles();
   const { userInfo } = useContext(UserContext);
 
