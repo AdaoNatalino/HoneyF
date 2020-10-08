@@ -16,6 +16,7 @@ const createNewUser = (userData) => {
     });
 };
 
+
 const logInUser = (userData) => {
   return fetch(URL + `clients/login`, {
     method: "POST",
