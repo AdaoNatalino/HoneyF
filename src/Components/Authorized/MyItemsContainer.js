@@ -39,13 +39,16 @@ export default function MyItemsContainer() {
 
   useEffect(() => {
     API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
-  }, [orders]);
+    // const orders = API.getMyOrders(userInfo);
+    // debugger
+    // setOrders(orders)
+  }, [orders]); 
 
   useEffect(() => {
     API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
   }, []);
 
-  
+
   const classes = useStyles();
   const { userInfo } = useContext(UserContext);
 

@@ -1,11 +1,11 @@
-const URL = `https://localhost:5001/api/`
+const URL = `https://localhost:5001/api/`;
 
 const createNewUser = (userData) => {
   return fetch(URL + "clients", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Accept": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify(userData),
   })
@@ -16,13 +16,12 @@ const createNewUser = (userData) => {
     });
 };
 
-
 const logInUser = (userData) => {
   return fetch(URL + `clients/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Accept": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify(userData),
   })
@@ -40,7 +39,7 @@ const processNewOrders = (itemData, user) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Accept": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify(itemData),
   })
@@ -58,5 +57,16 @@ const getMyOrders = (userInfo) => {
       .catch((error) => console.log(error))
   );
 };
+
+// const getMyOrders = async (userInfo) => {
+//   try {
+//     const data = await fetch(URL + `orders?username=${userInfo}`);
+//     const resp = await data.json();
+//     console.log(resp.orders)
+//     return resp.orders;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 export default { createNewUser, logInUser, getMyOrders, processNewOrders };
