@@ -50,23 +50,20 @@ const processNewOrders = (itemData, user) => {
     });
 };
 
-const getMyOrders = (userInfo) => {
-  return (
-    fetch(URL + `orders?username=${userInfo}`)
-      .then((resp) => resp.json())
-      .catch((error) => console.log(error))
-  );
-};
-
-// const getMyOrders = async (userInfo) => {
-//   try {
-//     const data = await fetch(URL + `orders?username=${userInfo}`);
-//     const resp = await data.json();
-//     console.log(resp.orders)
-//     return resp.orders;
-//   } catch (error) {
-//     console.log(error);
-//   }
+// const getMyOrders = (userInfo) => {
+//   return fetch(URL + `orders?username=${userInfo}`)
+//     .then((resp) => resp.json())
+//     .catch((error) => console.log(error));
 // };
+
+const getMyOrders = async (userInfo) => {
+  try {
+    const resp = await fetch(URL + `orders?username=${userInfo}`);
+    const respParsed = await resp.json();
+    return respParsed;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 export default { createNewUser, logInUser, getMyOrders, processNewOrders };

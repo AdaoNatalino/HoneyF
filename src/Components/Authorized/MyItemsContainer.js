@@ -1,5 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
-import { withStyles, makeStyles } from "@material-ui/core/styles";
+import {
+  withStyles,
+  makeStyles,
+  responsiveFontSizes,
+} from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -37,17 +41,26 @@ const useStyles = makeStyles({
 export default function MyItemsContainer() {
   const [orders, setOrders] = useState([]);
 
-  useEffect(() => {
-    API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
-    // const orders = API.getMyOrders(userInfo);
-    // debugger
-    // setOrders(orders)
-  }, [orders]); 
+  const getDataAndSetOrders = async () => {
+    const resp = await API.getMyOrders(userInfo);
+    setOrders(resp.orders);
+  };
 
   useEffect(() => {
-    API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
+    getDataAndSetOrders();
   }, []);
 
+  useEffect(() => {
+    getDataAndSetOrders();
+  }, [orders]);
+
+  // useEffect(() => {
+  //   API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
+  // }, [orders]);
+
+  // useEffect(() => {
+  //   API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
+  // }, []);
 
   const classes = useStyles();
   const { userInfo } = useContext(UserContext);
