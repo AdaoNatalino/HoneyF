@@ -32,6 +32,7 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
+
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
@@ -54,13 +55,13 @@ export default function MyItemsContainer() {
     getDataAndSetOrders();
   }, [orders]);
 
-  // useEffect(() => {
-  //   API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
-  // }, [orders]);
+  useEffect(() => {
+    API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
+  }, [orders]);
 
-  // useEffect(() => {
-  //   API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
-  // }, []);
+  useEffect(() => {
+    API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
+  }, []);
 
   const classes = useStyles();
   const { userInfo } = useContext(UserContext);
