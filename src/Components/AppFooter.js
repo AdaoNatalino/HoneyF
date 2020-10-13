@@ -7,15 +7,12 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import Typography from './HomeTheme/modules/components/Typography';
 
-
-;
-
 function Copyright() {
   return (
     <React.Fragment>
       {'© '}
       <Link color="inherit" href="/">
-        PROJECT!
+        Honeywell
       </Link>{' '}
       {new Date().getFullYear()}
     </React.Fragment>
@@ -101,7 +98,7 @@ export default function AppFooter() {
           </Grid>
           <Grid item xs={6} sm={4} md={2}>
             <Typography variant="h6" marked="left" gutterBottom style={{color: "white"}}>
-              PROJECT!
+              HONEYWELL!
             </Typography>
             <ul className={classes.list} style={{color: "white"}}>
               <li className={classes.listItem}>

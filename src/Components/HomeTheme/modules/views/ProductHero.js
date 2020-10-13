@@ -1,13 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Typography from "../components/Typography";
 import ProductHeroLayout from "./ProductHeroLayout";
 
 const backgroundImage =
-  // 'https://www.indianweb2.com/wp-content/uploads/2015/05/barter_system.jpg'
-  // 'https://miro.medium.com/max/12000/1*cuOXHtuMPGpudm93fhklww.jpeg';
-  "https://www.1stformationsblog.co.uk/wp-content/uploads/2014/06/business-bank-accounts-for-non-UK-residents-977x4881-1280x720.jpg";
+  "https://assets.phenompeople.com/CareerConnectResources/HONEUS/social/hon-logo_1024x512-1574325457550.png"
 
 const styles = (theme) => ({
   background: {
@@ -40,9 +37,7 @@ function ProductHero(props) {
         src={backgroundImage}
         alt="increase priority"
       />
-      <Typography color="inherit" align="center" variant="h2">
-        WINTERFLOOD PROJECT
-      </Typography>
+     
     </ProductHeroLayout>
   );
 }
