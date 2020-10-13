@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import {
   withStyles,
   makeStyles,
-  responsiveFontSizes,
 } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -32,72 +31,48 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
   },
 });
 
-export default function MyItemsContainer() {
-  const [orders, setOrders] = useState([]);
+export default function MyItemsContainer({ setUserToShow }) {
+  const [users, setUsers] = useState([]);
+  const { userInfo } = useContext(UserContext);
 
-  const getDataAndSetOrders = async () => {
-    const resp = await API.getMyOrders(userInfo);
-    setOrders(resp.orders);
+
+  const getDataAndSetUsers = async () => {
+    const resp = await API.getAllUsers(userInfo);
+    setUsers(resp.users);
   };
 
   useEffect(() => {
-    getDataAndSetOrders();
+    getDataAndSetUsers();
   }, []);
 
-  useEffect(() => {
-    getDataAndSetOrders();
-  }, [orders]);
-
-  useEffect(() => {
-    API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
-  }, [orders]);
-
-  useEffect(() => {
-    API.getMyOrders(userInfo).then((r) => setOrders(r.orders));
-  }, []);
+  
 
   const classes = useStyles();
-  const { userInfo } = useContext(UserContext);
 
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell>CLIENT </StyledTableCell>
-            <StyledTableCell align="right">TYPE</StyledTableCell>
-            <StyledTableCell align="right">INSTRUMENT</StyledTableCell>
-            <StyledTableCell align="right">VOLUME</StyledTableCell>
-            <StyledTableCell align="right">PRICE</StyledTableCell>
-            <StyledTableCell align="right">TOTAL</StyledTableCell>
-            <StyledTableCell align="right">RECEIPT NUMBER</StyledTableCell>
+            <StyledTableCell align="right">USER</StyledTableCell>
+            <StyledTableCell align="right">USERNAME</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {orders.map((order) => (
-            <StyledTableRow key={order.id}>
-              <StyledTableCell component="th" scope="row">
-                {userInfo}
+          {users.map((user) => (
+            <StyledTableRow key={user.id} onClick={() => setUserToShow(user)} >
+              <StyledTableCell align="right" >
+                {user.username}
               </StyledTableCell>
               <StyledTableCell align="right">
-                {order.trade_Type}
+                {user.name}
               </StyledTableCell>
-              <StyledTableCell align="right">
-                {order.instrument}
-              </StyledTableCell>
-              <StyledTableCell align="right">{order.volume}</StyledTableCell>
-              <StyledTableCell align="right">{order.price}</StyledTableCell>
-              <StyledTableCell align="right">
-                {order.price * order.volume}
-              </StyledTableCell>
-              <StyledTableCell align="right">{order.receipt}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

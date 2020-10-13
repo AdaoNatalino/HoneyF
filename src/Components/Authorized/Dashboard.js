@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import clsx from "clsx";
@@ -22,6 +22,9 @@ import ListItemText from "@material-ui/core/ListItemText";
 import AddToPhotosIcon from "@material-ui/icons/AddToPhotos";
 import MyItemsContainer from "./MyItemsContainer";
 import { UserContext } from "../../App";
+import UserDetailsCard from "./UserDetailsCard";
+
+import API from "../../API"
 
 const drawerWidth = 240;
 
@@ -107,12 +110,24 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard() {
   const { userInfo, logOut } = useContext(UserContext);
+  const [users, setUsers] = useState([]);
+
+  const getDataAndSetUsers = async () => {
+    const resp = await API.getAllUsers(userInfo);
+    setUsers(resp.users);
+  };
+
+  useEffect(() => {
+    getDataAndSetUsers();
+  }, []);
 
   let history = useHistory();
 
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(true);
+  const [userToShow, setUserToShow] = React.useState(null);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -120,7 +135,9 @@ export default function Dashboard() {
     setOpen(false);
   };
 
-  const renderMyItemsContainer = () => <MyItemsContainer userInfo={userInfo} />;
+  const renderMyItemsContainer = () => (
+    <MyItemsContainer userInfo={userInfo} setUserToShow={setUserToShow} />
+  );
 
   return (
     <div className={classes.root}>
@@ -182,13 +199,13 @@ export default function Dashboard() {
             <ListItem
               button
               onClick={() => {
-                history.push("/newItem");
+                history.push("/newCostumer");
               }}
             >
               <ListItemIcon>
                 <AddToPhotosIcon />
               </ListItemIcon>
-              <ListItemText primary="Add Orders" />
+              <ListItemText primary="Add Costumer" />
             </ListItem>
 
             <ListItem
@@ -212,7 +229,14 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={8} lg={9}>
-              {renderMyItemsContainer()}
+              {userToShow ? (
+                <UserDetailsCard
+                  user={userToShow}
+                  setUserToShow={setUserToShow}
+                />
+              ) : (
+                renderMyItemsContainer()
+              )}
             </Grid>
             <Grid item xs={12}></Grid>
           </Grid>

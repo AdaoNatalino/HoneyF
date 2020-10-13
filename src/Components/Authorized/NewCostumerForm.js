@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useHistory } from "react-router-dom";
-import { UserContext } from "../../App";
+// import { UserContext } from "../../App";
 
 import API from "../../API";
 
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
-  const { handlePostAuth } = useContext(UserContext);
+  // const { handlePostAuth } = useContext(UserContext);
 
   const classes = useStyles();
 
@@ -60,14 +60,14 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-
   let history = useHistory();
 
   const handleSignUp = (e) => {
     e.preventDefault();
     const userData = { name, username, password, email, address, phone };
-    API.createNewUser(userData).then(handlePostAuth);
-    history.push("/");
+    API.createNewUser(userData)
+      // .then(handlePostAuth);
+    history.push("/profile");
     clearForm();
   };
 
@@ -89,7 +89,7 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Register a New Costumer
         </Typography>
 
         <form className={classes.form} noValidate onSubmit={handleSignUp}>
@@ -189,15 +189,9 @@ export default function SignUp() {
             color="primary"
             className={classes.submit}
           >
-            Sign Up
+            CONFIRM
           </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/login" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
+       
         </form>
       </div>
       <Box mt={5}>

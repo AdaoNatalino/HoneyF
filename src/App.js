@@ -10,33 +10,30 @@ function App() {
 
   useEffect(() => {
     document.title = "Honeywell UK";
-    if (localStorage.getItem("user")) setUser(localStorage.getItem("user"));
+    if (localStorage.getItem("honey")) setUser(localStorage.getItem("honey"));
   }, []);
 
   const handlePostAuth = (resp) => {
-    if (resp.error) {
-      alert(resp.error);
-    } else {
-      if (resp.client) {
-        setUser(resp.client.username);
-        localStorage.setItem("user", resp.client.username);
-      }
+    if (resp.user) {      
+      setUser(resp.user.username);
+      localStorage.setItem("honey", resp.user.username);
+      return;
     }
+    if (resp.errors) alert(resp.errors);
   };
 
   const logOut = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("honey");
     setUser(null);
   };
 
   const properties = {
     userInfo: user,
-    handlePostAuth, 
-    logOut
-  }
+    handlePostAuth,
+    logOut,
+  };
   return (
-    <UserContext.Provider value={ properties }
-    >
+    <UserContext.Provider value={properties}>
       <Router>
         <Switch>{user ? <Authorized /> : <Unauthorized />}</Switch>
       </Router>

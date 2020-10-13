@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import Home from "../HomeTheme/Home";
 import AuthMenu from "./AuthMenu";
-import NewItemForm from "./NewItemForm";
+import NewCostumerForm from "./NewCostumerForm";
 import DashBoard from "./Dashboard";
 import AppFooter from "../AppFooter";
 
@@ -16,8 +16,8 @@ export default function Authorized() {
           <Home />
           <AppFooter />
         </Route>
-        <Route exact path="/newItem">
-          <NewItemForm />
+        <Route exact path="/newCostumer">
+          <NewCostumerForm />
         </Route>
         <Route exact path="/profile">
           <DashBoard />
