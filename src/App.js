@@ -10,20 +10,21 @@ function App() {
 
   useEffect(() => {
     document.title = "Honeywell UK";
-    if (localStorage.getItem("honey")) setUser(localStorage.getItem("honey"));
+    if (localStorage.getItem("honeyUser")) setUser(localStorage.getItem("honeyUser"));
   }, []);
 
   const handlePostAuth = (resp) => {
     if (resp.user) {      
       setUser(resp.userToken.username);
-      localStorage.setItem("honey", resp.userToken.username);
+      localStorage.setItem("honey", resp.accessToken);
+      localStorage.setItem("honeyUser", resp.userToken.username);
       return;
     }
     if (resp.errors) alert(resp.errors);
   };
 
   const logOut = () => {
-    localStorage.removeItem("honey");
+    localStorage.removeItem("honeyUser");
     setUser(null);
   };
 

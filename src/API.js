@@ -43,7 +43,7 @@ const logInUser = (userData) => {
 
 const getAllUsers = async () => {
   try {
-    const resp = await fetch(URL + `users`);
+    const resp = await authorizedFetch(URL + `users`);
     const respParsed = await resp.json();
     return respParsed;
   } catch (err) {
