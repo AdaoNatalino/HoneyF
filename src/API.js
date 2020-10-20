@@ -1,11 +1,22 @@
 const URL = `https://localhost:5001/api/`;
 
+const authorizedFetch = (url, options = {}) => {
+  return fetch(url, {
+    method: options.method,
+    headers: {
+      ...options.headers,
+      Authorization: `Bearer ${localStorage.getItem("honey")}`,
+    },
+    body: options.body,
+  });
+};
+
 const createNewUser = (userData) => {
-  return fetch(URL + "users", {
+  return fetch(URL + "users/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Accept": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify(userData),
   })
@@ -20,7 +31,7 @@ const logInUser = (userData) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Accept": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify(userData),
   })
@@ -29,7 +40,6 @@ const logInUser = (userData) => {
       return res;
     });
 };
-
 
 const getAllUsers = async () => {
   try {

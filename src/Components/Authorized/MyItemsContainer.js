@@ -44,14 +44,12 @@ export default function MyItemsContainer({ setUserToShow }) {
 
   const getDataAndSetUsers = async () => {
     const resp = await API.getAllUsers(userInfo);
-    setUsers(resp.users);
+    setUsers(resp.users.filter(u => u.username != userInfo));
   };
 
   useEffect(() => {
     getDataAndSetUsers();
   }, []);
-
-  
 
   const classes = useStyles();
 
@@ -60,8 +58,8 @@ export default function MyItemsContainer({ setUserToShow }) {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="right">USER</StyledTableCell>
             <StyledTableCell align="right">USERNAME</StyledTableCell>
+            <StyledTableCell align="right">NAME</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

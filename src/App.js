@@ -15,8 +15,8 @@ function App() {
 
   const handlePostAuth = (resp) => {
     if (resp.user) {      
-      setUser(resp.user.username);
-      localStorage.setItem("honey", resp.user.username);
+      setUser(resp.userToken.username);
+      localStorage.setItem("honey", resp.userToken.username);
       return;
     }
     if (resp.errors) alert(resp.errors);

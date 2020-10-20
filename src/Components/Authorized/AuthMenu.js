@@ -85,7 +85,7 @@ export default function AuthMenu() {
           history.push("/profile");
         }}
       >
-        Profile{" "}
+        Dashboard{" "}
       </MenuItem>
       <MenuItem
         onClick={() => {
@@ -119,7 +119,7 @@ export default function AuthMenu() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <p>Dashboard</p>
       </MenuItem>
     </Menu>
   );
