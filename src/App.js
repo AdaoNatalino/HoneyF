@@ -14,10 +14,11 @@ function App() {
   }, []);
 
   const handlePostAuth = (resp) => {
-    if (resp.user) {      
-      setUser(resp.userToken.username);
+    if (resp.userToken) {       
+      setUser(resp.userToken.email);
+      localStorage.setItem("honeyUser", resp.userToken.email);
       localStorage.setItem("honey", resp.accessToken);
-      localStorage.setItem("honeyUser", resp.userToken.username);
+      // debugger
       return;
     }
     if (resp.errors) alert(resp.errors);
@@ -25,6 +26,8 @@ function App() {
 
   const logOut = () => {
     localStorage.removeItem("honeyUser");
+    localStorage.removeItem("honey");
+
     setUser(null);
   };
 

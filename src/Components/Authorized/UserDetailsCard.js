@@ -34,7 +34,7 @@ export default function SimpleCard({ user, setUserToShow }) {
           color="textSecondary"
           gutterBottom
         >
-          Username: {user.username}
+          Username: {user.email}
         </Typography>
         <Typography variant="h5" component="h2">
           Name: {user.name}

@@ -113,13 +113,13 @@ export default function Dashboard() {
   const [users, setUsers] = useState([]);
 
   const getDataAndSetUsers = async () => {
-    const resp = await API.getAllUsers(userInfo);
+    const resp = await API.getAllUsers();
     setUsers(resp.users);
   };
 
   useEffect(() => {
     getDataAndSetUsers();
-  }, []);
+  }, [users]);
 
   let history = useHistory();
 

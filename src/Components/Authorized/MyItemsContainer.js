@@ -41,15 +41,14 @@ export default function MyItemsContainer({ setUserToShow }) {
   const [users, setUsers] = useState([]);
   const { userInfo } = useContext(UserContext);
 
-
   const getDataAndSetUsers = async () => {
-    const resp = await API.getAllUsers(userInfo);
-    setUsers(resp.users.filter(u => u.username != userInfo));
+    const resp = await API.getAllUsers();
+    setUsers(resp.users.filter(u => u.email !== userInfo));
   };
 
   useEffect(() => {
     getDataAndSetUsers();
-  }, []);
+  }, [users]);
 
   const classes = useStyles();
 
@@ -58,7 +57,7 @@ export default function MyItemsContainer({ setUserToShow }) {
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="right">USERNAME</StyledTableCell>
+            <StyledTableCell align="right">ID</StyledTableCell>
             <StyledTableCell align="right">NAME</StyledTableCell>
           </TableRow>
         </TableHead>
@@ -66,7 +65,7 @@ export default function MyItemsContainer({ setUserToShow }) {
           {users.map((user) => (
             <StyledTableRow key={user.id} onClick={() => setUserToShow(user)} >
               <StyledTableCell align="right" >
-                {user.username}
+                {user.id}
               </StyledTableCell>
               <StyledTableCell align="right">
                 {user.name}
