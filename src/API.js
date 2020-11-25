@@ -11,6 +11,7 @@ const authorizedFetch = (url, options = {}) => {
   });
 };
 
+
 const createNewUser = (userData) => {
   return fetch(URL + "users/register", {
     method: "POST",
